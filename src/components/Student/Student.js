@@ -22,6 +22,7 @@ export default class Student extends Component {
         <h1>{this.state.studentInfo.first_name} {this.state.studentInfo.last_name}</h1>
         <h3>Grade: {this.state.studentInfo.grade}</h3>
         <h3>Email: {this.state.studentInfo.email}</h3>
+        <button onClick={this.props.history.goBack}>Back</button>
       </div>
     )
   }

@@ -12,7 +12,7 @@ export default class ClassList extends Component {
 
   componentDidMount() {
     axios.get(`http://localhost:3005/students?class=${this.props.match.params.class}`)
-      .then(response => this.setState({ students: response.data }))
+      .then(course => this.setState({ students: course.data }))
       .catch(err => console.log(`Error: ${err.message}`));
   }
 
@@ -20,13 +20,13 @@ export default class ClassList extends Component {
     return (
       <div className="box">
         <h1>{this.props.match.params.class}</h1>
+        <button onClick={this.props.history.goBack}>Go Back</button>
         <h2>ClassList:</h2>
         {this.state.students.map((student, index) => (
           (
             <Link key={index} to={`/student/${student.id}`}>
               <h3>{student.first_name} {student.last_name}</h3>
             </Link>
-
           )
         ))}
       </div>
